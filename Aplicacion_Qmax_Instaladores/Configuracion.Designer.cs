@@ -129,12 +129,12 @@ namespace Aplicacion_Qmax_Instaladores
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Texto_Capacidad;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Texto_Perfil;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox Texto_Modo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox Texto_Capacidad;
+        public System.Windows.Forms.TextBox Texto_Perfil;
+        public System.Windows.Forms.TextBox Texto_Modo;
     }
 }

@@ -43,6 +43,7 @@ namespace Aplicacion_Qmax_Instaladores
 
 
             comboBox1.DataSource = Tipo_instalacion;
+            comboBox1.SelectedIndex = 0;
             comboBox2.DataSource = Tiene_sino;
             comboBox3.DataSource = Tipo_solucion;
 
@@ -64,9 +65,7 @@ namespace Aplicacion_Qmax_Instaladores
                 // indica que es una solucion de vehiculos y debemos armar la config
 
                 tiposol = "Vehiculos";
-                config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
-                config.Show();
-                this.Hide();
+                
             }
         }
 
@@ -81,9 +80,6 @@ namespace Aplicacion_Qmax_Instaladores
                 // indica que es una solucion con grupo y debemos armar la config
 
                 tiposol = "Aislada_Grupo";
-                config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
-                this.Hide();
-                config.Show();
             }
         }
 
@@ -95,21 +91,22 @@ namespace Aplicacion_Qmax_Instaladores
                 // Indica que es una solucion de autoconsumo y debemos armar la config
 
                 tiposol = "Autoconsumo";
-                config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
-                this.Hide();
-                config.Show();
-
             }
             else if (Equals(comboBox3.SelectedItem.ToString(), "Backup"))
             {
                 // indica que es una solucion de backup y debemos armar la config
 
                 tiposol = "Backup";
-                config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
-                this.Hide();
-                config.Show();
+               
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
+            config.Show();
+            this.Hide();
         }
     }
 }
