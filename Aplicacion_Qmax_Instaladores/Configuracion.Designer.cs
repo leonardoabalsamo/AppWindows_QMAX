@@ -33,6 +33,7 @@ namespace Aplicacion_Qmax_Instaladores
             this.Texto_Modo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textConfig = new System.Windows.Forms.TextBox();
+            this.BtnInicio = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -68,11 +69,22 @@ namespace Aplicacion_Qmax_Instaladores
             this.textConfig.Size = new System.Drawing.Size(149, 132);
             this.textConfig.TabIndex = 14;
             // 
+            // BtnInicio
+            // 
+            this.BtnInicio.Location = new System.Drawing.Point(65, 253);
+            this.BtnInicio.Name = "BtnInicio";
+            this.BtnInicio.Size = new System.Drawing.Size(75, 23);
+            this.BtnInicio.TabIndex = 15;
+            this.BtnInicio.Text = "Aceptar";
+            this.BtnInicio.UseVisualStyleBackColor = true;
+            this.BtnInicio.Click += new System.EventHandler(this.BtnInicio_Click);
+            // 
             // Configuracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(212, 299);
+            this.Controls.Add(this.BtnInicio);
             this.Controls.Add(this.textConfig);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -90,5 +102,6 @@ namespace Aplicacion_Qmax_Instaladores
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox Texto_Modo;
         private System.Windows.Forms.TextBox textConfig;
+        private System.Windows.Forms.Button BtnInicio;
     }
 }

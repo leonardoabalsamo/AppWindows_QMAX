@@ -14,6 +14,7 @@ namespace Aplicacion_Qmax_Instaladores
     {
         Sistema sistema;
         Form Anterior;
+        Form inicio;
 
         private Bateria bat;
         private Inversor inv;
@@ -22,10 +23,11 @@ namespace Aplicacion_Qmax_Instaladores
         private int cantidad;
 
 
-        public Configuracion(Sistema s, Form a, Bateria b, Inversor i, string tiposol, int cant)
+        public Configuracion(Sistema s, Form a, Bateria b, Inversor i, string tiposol, int cant, Form ant)
         {
             sistema = s;
             Anterior = a;
+            inicio = ant;
             bat = b;
             inv = i;
             Tipo_Solucion = tiposol;
@@ -79,6 +81,11 @@ namespace Aplicacion_Qmax_Instaladores
 
         }
 
+        private void BtnInicio_Click(object sender, EventArgs e)
+        {
+            inicio.Show();
+            this.Hide();
+        }
     }
 }
 

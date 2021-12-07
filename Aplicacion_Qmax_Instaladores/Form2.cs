@@ -14,6 +14,7 @@ namespace Aplicacion_Qmax_Instaladores
     {
         Sistema sistema;
         Form anterior;
+        Form inicio;
         private Form config;
         private List<string> Tipo_instalacion;
         private List<string> Tiene_sino;
@@ -99,7 +100,7 @@ namespace Aplicacion_Qmax_Instaladores
 
         private void button1_Click(object sender, EventArgs e)
         {
-            config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad);
+            config = new Configuracion(sistema, this, bat, inv, tiposol, cantidad, anterior);
             config.Show();
             this.Hide();
         }
