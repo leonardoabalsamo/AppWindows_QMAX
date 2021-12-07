@@ -25,20 +25,16 @@ namespace Aplicacion_Qmax_Instaladores
         public Form1(Sistema s)
         {
             sistema = s;
-            form2 = new Form2(sistema, this, bat, inv, seleccion_cantidad); // paso la referencia de este form al siguiente
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBox1.DataSource = sistema.carga_inversores();
-            comboBox1.SelectedIndex = 0;
 
             comboBox2.DataSource = sistema.carga_baterias();
-            comboBox2.SelectedIndex = 0;
 
             comboBox3.DataSource = sistema.carga_tensiones();
-            comboBox3.SelectedIndex = 0;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,26 +59,30 @@ namespace Aplicacion_Qmax_Instaladores
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (validacion()==true)
-            {
-                form2.Show();
-                this.Hide();
-            }
-            else 
-            {
-                // Mensaje que ha seleccionado una configuración incorrecta
-                string message = "Ha ingresado una cantidad de baterías inválida, por favor ingrese una nueva opción";
-                string caption = "Error";
-                MessageBoxButtons buttons = MessageBoxButtons.OK;
-                DialogResult resultado;
+            inv = sistema.verifica_inversor(seleccion_inversor);
+            bat = sistema.verifica_bateria(seleccion_bateria);
 
-                // Displays the MessageBox.
-                resultado = MessageBox.Show(message, caption, buttons);
-                if (resultado == System.Windows.Forms.DialogResult.OK)
+            if (validacion()==true)
                 {
-                    this.Show();
+                    form2 = new Form2(sistema, this, bat, inv, seleccion_cantidad); // paso la referencia de este form al siguiente
+                    form2.Show();
+                    this.Hide();
                 }
-            }        
+            else 
+                {
+                    // Mensaje que ha seleccionado una configuración incorrecta
+                    string message = "Ha ingresado una cantidad de baterías inválida, por favor ingrese una nueva opción";
+                    string caption = "Error";
+                    MessageBoxButtons buttons = MessageBoxButtons.OK;
+                    DialogResult resultado;
+
+                    // Displays the MessageBox.
+                    resultado = MessageBox.Show(message, caption, buttons);
+                    if (resultado == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.Show();
+                    }
+                }        
             
             
         }
@@ -92,9 +92,6 @@ namespace Aplicacion_Qmax_Instaladores
 
         private bool validacion()
         {          
-            inv = sistema.verifica_inversor(seleccion_inversor);
-            bat = sistema.verifica_bateria(seleccion_bateria);
-
             //Validaciones contando con el inversor + baterias + cantidad baterias
             // cantidad de baterias
             // ( tension de inversor / tension de bateria )
@@ -112,7 +109,5 @@ namespace Aplicacion_Qmax_Instaladores
             }
             else return false;
         }
-
-
     }
 }

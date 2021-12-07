@@ -18,8 +18,10 @@ namespace Aplicacion_Qmax_Instaladores
         private List<string> Tipo_instalacion;
         private List<string> Tiene_sino;
         private List<string> Tipo_solucion;
+
         private Bateria bat;
         private Inversor inv;
+
         private string tiposol;
         private int cantidad;
 
@@ -43,8 +45,9 @@ namespace Aplicacion_Qmax_Instaladores
 
 
             comboBox1.DataSource = Tipo_instalacion;
-            comboBox1.SelectedIndex = 0;
+            comboBox1.SelectedIndex = 1;
             comboBox2.DataSource = Tiene_sino;
+            comboBox2.SelectedIndex = 1;
             comboBox3.DataSource = Tipo_solucion;
 
             comboBox2.Visible = false;
@@ -56,16 +59,14 @@ namespace Aplicacion_Qmax_Instaladores
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Equals(comboBox1.SelectedItem.ToString() , "Estacionaria"))
-               {
+            {
                 red_elec.Visible = true;
                 comboBox2.Visible = true;
             }
             else
             {
                 // indica que es una solucion de vehiculos y debemos armar la config
-
-                tiposol = "Vehiculos";
-                
+                tiposol = "Vehiculos";                
             }
         }
 
@@ -78,7 +79,6 @@ namespace Aplicacion_Qmax_Instaladores
             else
             {
                 // indica que es una solucion con grupo y debemos armar la config
-
                 tiposol = "Aislada_Grupo";
             }
         }
@@ -87,18 +87,13 @@ namespace Aplicacion_Qmax_Instaladores
         {
             if (Equals(comboBox3.SelectedItem.ToString(), "Autoconsumo"))
             {
-
                 // Indica que es una solucion de autoconsumo y debemos armar la config
-
                 tiposol = "Autoconsumo";
             }
             else if (Equals(comboBox3.SelectedItem.ToString(), "Backup"))
             {
                 // indica que es una solucion de backup y debemos armar la config
-
-                tiposol = "Backup";
-               
-
+                tiposol = "Backup";              
             }
         }
 

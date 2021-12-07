@@ -14,8 +14,10 @@ namespace Aplicacion_Qmax_Instaladores
     {
         Sistema sistema;
         Form Anterior;
+
         private Bateria bat;
         private Inversor inv;
+
         private string Tipo_Solucion;
         private int cantidad;
 
@@ -33,10 +35,50 @@ namespace Aplicacion_Qmax_Instaladores
 
         private void Configuracion_Load(object sender, EventArgs e)
         {
+            Carga_Config();
             Texto_Modo.Text = Tipo_Solucion;
-            Texto_Perfil.Text = bat.modelo_bateria;
-            Texto_Capacidad.Text = (bat.capacidad_bateria * cantidad).ToString();
         }
+
+        private void Carga_Config()
+        {
+
+            if (Equals(Tipo_Solucion.ToString(), "Aislada_Grupo"))
+            {
+                Texto_Modo.Text = " Inversor/Cargador ";
+                textConfig.Text = 
+                    "Perfil de Entrada: Tolerante" + 
+                    "Capacidad del Banco:" + " Ah ";
+            }
+
+            if (Equals(Tipo_Solucion.ToString(), "Vehiculos"))
+            {
+                Texto_Modo.Text = " Inversor/Cargador ";
+                textConfig.Text = "Perfil de Entrada: Tolerante" + " Capacidad del Banco:" + " Ah ";
+            }
+
+            if (Equals(Tipo_Solucion.ToString() , "Backup"))
+            {
+                Texto_Modo.Text = " Inversor/Cargador ";
+
+                textConfig.Text =                     
+                    "Perfil de Entrada: Estricta" + 
+                    "Capacidad del Banco:" + " Ah ";
+            }
+
+            if (Equals(Tipo_Solucion.ToString(), "Autoconsumo"))
+            {
+                Texto_Modo.Text = " Autoconsumo ";
+
+                textConfig.Text = 
+                    "Perfil de Entrada: Estricta" + 
+                    "Capacidad del Banco:" + " Ah " +
+                    "Tensión de batería de cierre de derivación: " + "" +
+                    "Tensión de batería para apertura de derivación: " + ""
+                    ;
+            }
+
+        }
+
     }
 }
 
